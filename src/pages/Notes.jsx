@@ -1,12 +1,24 @@
 import { CiSearch } from "react-icons/ci"
+import dummyNotes from "../dummy_notes"
+import NoteItem from "../components/NoteItem"
+import { Link } from "react-router-dom"
+import { BsPlusLg } from "react-icons/bs"
 const Notes = () => {
     return (
         <section>
             <header className='notes_header'>
                 <h2>My Notes</h2>
-                <input type="text" autoFocus placeholder='Search...' />
+                <input type="text" autoFocus placeholder='Keyword...' />
                 <button className='btn'><CiSearch/></button>
-            </header>            
+            </header> 
+            <div className='notes__container'>
+                {
+                    dummyNotes.map(note => 
+                        <NoteItem key={note.id} />
+                    )
+                }
+            </div>      
+            <Link className="btn add__btn"><BsPlusLg/></Link>     
         </section>
 
     )
