@@ -1,9 +1,8 @@
 import { CiSearch } from "react-icons/ci"
-import dummyNotes from "../dummy_notes"
 import NoteItem from "../components/NoteItem"
 import { Link } from "react-router-dom"
 import { BsPlusLg } from "react-icons/bs"
-const Notes = () => {
+const Notes = ({notes}) => {
     return (
         <section>
             <header className='notes__header'>
@@ -13,7 +12,7 @@ const Notes = () => {
             </header>
             <div className='notes__container'>
                 {
-                    dummyNotes.map(note =>
+                    notes.map(note =>
                         <NoteItem key={note.id} note={note} />
                     )
                 }
