@@ -69,8 +69,7 @@ body {
     display: none;
 }
 
-h2,
-h4 {
+h2,  h4 {
     font-weight: 500;
 }
 
@@ -162,22 +161,20 @@ h2 {
 
 
 /* CREATE NOTE & EDIT NOTE PAGE */
-
-.create__note__header {
+.create-note__header {
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
 
-.create__note__form {
+.create-note__form {
     display: flex;
     flex-direction: column;
     gap: 1rem;
     margin-top: 2rem;
 }
 
-.create__note__form input,
-.create__note__form textarea {
+.create-note__form input, .create-note__form textarea {
     width: 100%;
     padding: 0.5rem 1rem;
     background: transparent;
@@ -186,7 +183,7 @@ h2 {
     color: var(--color-white);
 }
 
-.create__note__form input {
+.create-note__form input {
     font-size: 2rem;
 }
 
