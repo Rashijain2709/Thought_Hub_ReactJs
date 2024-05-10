@@ -2,26 +2,25 @@ import { BrowserRouter, Route, Routes } from "react-router-dom"
 import Notes from "./pages/Notes"
 import CreateNote from "./pages/CreateNote"
 import EditNote from "./pages/EditNote";
-import dummyNotes from "./dummy_notes"
+// import dummyNotes from "./dummy_notes"
 
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 
 const App = () => {
 
-    const [notes, setNotes] = useState(dummyNotes);
+    const [notes, setNotes] = useState(JSON.parse(localStorage.getItem('notes')) || []);
 
-    const handleAddNote = () => {
-        const newNote = { id: Date.now(), title: 'New Note', details: 'This is a new note' };
-        setNotes([...notes, newNote]); // Update the notes state by adding a new note
-      };
+    useEffect(() => {
+        localStorage.setItem('notes', JSON.stringify(notes))
+    }, [notes])
 
     return (
         <main id="app">
             <BrowserRouter>
                 <Routes>
                     <Route path="/" element={<Notes notes={notes} />} />
-                    <Route path="/create-note" element={<CreateNote handleAddNote={handleAddNote} />} />
-                    <Route path="/edit-note/:id" element={<EditNote />} />
+                    <Route path="/create-note" element={<CreateNote setNotes={setNotes} />} />
+                    <Route path="/edit-note/:id" element={<EditNote notes={notes} setNotes={setNotes} />} />
                 </Routes>
             </BrowserRouter>
         </main>
